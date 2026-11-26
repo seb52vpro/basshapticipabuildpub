@@ -1,0 +1,37 @@
+# XcodeGen spec – run `xcodegen generate` to create BassHaptics.xcodeproj
+name: BassHaptics
+
+options:
+  bundleIdPrefix: com.example
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+  configs:
+    debug:
+      # The bass analysis is number crunching – keep it fast even in Debug builds.
+      SWIFT_OPTIMIZATION_LEVEL: "-O"
+
+targets:
+  BassHaptics:
+    type: application
+    platform: iOS
+    # Runs on iOS 17 and newer, including iOS 27 (iPhone 15 Pro Max ships with iOS 17).
+    deploymentTarget: "17.0"
+    sources:
+      - path: BassHaptics
+    settings:
+      base:
+        # Building with Xcode yourself? Change this to something unique and set your team:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.basshaptics
+        # DEVELOPMENT_TEAM: ABCDE12345
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: "YES"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_CFBundleDisplayName: Bass Haptics
+        INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: "YES"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
